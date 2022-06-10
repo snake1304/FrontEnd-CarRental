@@ -1,0 +1,148 @@
+.list-car-main {
+    border: 1px solid gray;
+    width: 85%;
+    margin: auto;
+    height: 2000px;
+    background: white;
+
+    .label {
+        margin-top: 50px;
+        margin-left: 31%;
+
+        h5 {
+            font-size: x-large;
+            font-weight: 600;
+            color: gray;
+        }
+
+
+    }
+
+    .content {
+        padding-top: 50px;
+        width: 100%;
+        margin: auto;
+        height: 1900px;
+
+        .header {
+            width: 100%;
+            margin: auto;
+            height: 50px;
+            border: 1px solid gray;
+            display: flex;
+
+            .mot {
+                width: 13%;
+                height: 50px;
+            }
+
+            .hai {
+                width: 15%;
+                height: 50px;
+            }
+
+            .ba {
+                width: 24%;
+                height: 50px;
+            }
+
+            .bon {
+                width: 24%;
+                height: 50px;
+            }
+
+            .nam {
+                margin-left: 10px;
+                width: 18%;
+                height: 50px;
+            }
+
+            .sau {
+                width: 10%;
+                height: 50px;
+
+
+
+            }
+
+
+            .bay {
+                width: 10%;
+                height: 50px;
+            }
+
+            h3 {
+                margin-top: 10px;
+            }
+
+            span {
+                padding-top: 20px;
+            }
+        }
+
+        .infor {
+            width: 100%;
+            margin: auto;
+            height: 50px;
+            display: flex;
+
+            .mot {
+                margin-left: 20px;
+                width: 10%;
+                height: 50px;
+            }
+
+            .hai {
+                width: 16%;
+                height: 50px;
+            }
+
+            .ba {
+                width: 24%;
+                height: 50px;
+            }
+
+            .bon {
+                width: 24%;
+                height: 50px;
+            }
+
+            .nam {
+                margin-left: 10px;
+                width: 18%;
+                height: 50px;
+            }
+
+            .sau {
+                width: 10%;
+                height: 50px;
+            }
+
+            .bay {
+                width: 10%;
+                height: 50px;
+            }
+
+            h4 {
+                margin-top: 10px;
+            }
+
+            span {
+                padding-top: 20px;
+            }
+        }
+    }
+
+
+}
+
+button.btn.btn-primary {
+    width: 100px;
+    margin-top: 5px;
+}
+
+button.btn.btn-danger {
+    width: 100px;
+    margin-top: 5px;
+
+}

@@ -1,0 +1,106 @@
+.car-container {
+    border-radius: 20px;
+    margin-left: 18%;
+    width: 1000px;
+    height: 200px;
+    background-color: white;
+    margin-top: 40px;
+    display: flex;
+
+    .left {
+        width: 30%;
+        height: 100%;
+        margin-left: 20px;
+
+        .img-car {
+            height: 160px;
+            width: 280px;
+        }
+    }
+
+    .center {
+        padding-top: 5%;
+        width: 57%;
+        margin-left: 15px;
+        padding: 50px;
+        height: 100%;
+
+        .img-vali {
+            width: 20px;
+            margin-left: 10px;
+        }
+
+        .name-car {
+            color: black;
+            font-size: large;
+            font-weight: 700;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .choNgoi {
+            padding-top: 5%;
+            padding-bottom: 10px;
+            font-weight: 1000;
+        }
+
+        .hanhLy {
+            font-weight: 1000;
+        }
+
+        path {
+            padding-left: 10%;
+            color: #0194f3;
+        }
+    }
+
+    .right {
+        padding-top: 5%;
+        width: 23%;
+        padding: 40px;
+        padding-top: 60px;
+        height: 100%;
+
+        .price-by-day {
+            padding-top: 5px;
+            display: flex;
+
+            .price {
+                font-size: xx-large;
+                color: #ff5e1f;
+                font-weight: 600;
+            }
+
+            .day {
+                padding-left: 5px;
+                padding-top: 19px;
+            }
+        }
+
+
+
+        button {
+            margin-top: 16px;
+            background-color: #ff5e1f;
+            width: 130px;
+            cursor: pointer;
+        }
+    }
+
+}
+
+.main-cnt {
+    background-color: #e6eaed;
+
+}
+
+.footer-all {
+    margin-top: 60px;
+}
+
+input[type="text"] {
+    width: 500px;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-left: 33%;
+}

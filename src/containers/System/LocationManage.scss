@@ -1,0 +1,147 @@
+.containern {
+    height: 1200px;
+    width: 70%;
+    border: 1px solid gray;
+    margin: auto;
+
+    .form-location {
+        height: 350px;
+        width: 100%;
+        margin-top: 40px;
+
+        .title {
+            color: gray;
+        }
+
+        .label5 {
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        .box5 {
+            margin-top: 1px;
+            margin-left: 50px;
+            width: 400px;
+            display: flex;
+
+
+        }
+
+        button {
+            margin-left: 60%;
+            width: 180px;
+            font-weight: 700;
+            height: 40px;
+            color: white;
+            border-radius: 8px;
+            background-color: #ff5e1f;
+            border: none;
+
+        }
+    }
+
+    .list {
+        margin-top: 50px;
+        height: 700px;
+        width: 100%;
+
+        .title {
+            color: gray;
+        }
+
+        .top {
+            display: flex;
+            margin-top: 40px;
+
+            h5 {
+                font-weight: 700;
+                margin-top: 13px;
+                margin-left: 50px;
+            }
+
+            .mot {
+                width: 23%;
+                height: 50px;
+            }
+
+            .hai {
+                width: 23%;
+                height: 50px;
+            }
+
+            .ba {
+                width: 23%;
+                height: 50px;
+            }
+
+            .bon {
+                width: 15%;
+                height: 50px;
+            }
+
+            .nam {
+                width: 15%;
+                height: 50px;
+            }
+        }
+
+        .bot {
+            display: flex;
+
+            h5 {
+                margin-top: 13px;
+                margin-left: 50px;
+            }
+
+            .mot {
+                width: 28%;
+                height: 50px;
+            }
+
+            .hai {
+                width: 28%;
+                height: 50px;
+            }
+
+            .ba {
+                width: 28%;
+                height: 50px;
+            }
+
+            .bon {
+                width: 15%;
+                height: 50px;
+
+                button {
+                    margin-top: 8px;
+                    margin-left: 40px;
+                    border: none;
+                    color: white;
+                    font-weight: 600;
+                    background: #179df4;
+                    width: 80px;
+                    height: 30px;
+                }
+            }
+
+            .nam {
+                width: 15%;
+                height: 50px;
+
+                button {
+                    font-weight: 600;
+                    width: 80px;
+                    height: 30px;
+                    margin-top: 8px;
+                    margin-left: 30px;
+                    border: none;
+                    color: white;
+                    background-color: #dc3545;
+                }
+            }
+        }
+    }
+
+
+
+}
