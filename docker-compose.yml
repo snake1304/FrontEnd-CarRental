@@ -10,6 +10,6 @@ services:
                - ".:/app"
                - "/app/node_modules"
           ports:
-               - "6070:80"
+               - "7070:80"
           environment:
                - NODE_ENV=development
