@@ -46,7 +46,7 @@ class DetailCarInList extends Component {
     }
     handleEditStatus=()=>{
         try {
-            axios.post('${process.env.REACT_APP_API}/api/put-car',this.state.status)            
+            axios.post(`${process.env.REACT_APP_API}/api/put-car`,this.state.status)            
             console.log("Respone create car", this.state,6000)
         } catch (error) {
             

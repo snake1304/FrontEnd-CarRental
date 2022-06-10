@@ -37,7 +37,7 @@ class LocationManage extends Component {
     }
     handleAddLocation=()=>{
         try {
-            axios.post('${process.env.REACT_APP_API}/api/create-new-location',this.state)            
+            axios.post(`${process.env.REACT_APP_API}/api/create-new-location`,this.state)            
             console.log("Respone create car", this.state,6000)
         } catch (error) {
             

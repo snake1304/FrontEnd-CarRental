@@ -37,7 +37,7 @@ class CarManage extends Component {
     
     handleAddCar=()=>{
         try {
-            axios.post('${process.env.REACT_APP_API}/api/create-new-car',this.state)            
+            axios.post(`${process.env.REACT_APP_API}/api/create-new-car`,this.state)            
             console.log("Respone create car", this.state,6000)
         } catch (error) {
             

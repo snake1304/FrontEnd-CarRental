@@ -102,7 +102,7 @@ class CarBooking2 extends Component {
 
     handleAddRental=()=>{
         try {
-            axios.post('${process.env.REACT_APP_API}/api/create-new-rental',this.state)            
+            axios.post(`${process.env.REACT_APP_API}/api/create-new-rental`,this.state)            
             console.log("Respone create rental", this.state,6000)
             alert("Your car rental information has been saved!");
             this.props.history.push(`/home`)
