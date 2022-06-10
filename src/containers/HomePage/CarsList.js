@@ -26,7 +26,7 @@ class CarsList1 extends Component {
 
      let diadiem= this.props
 
-    axios.get(`http://localhost:5000/api/get-detail-car-by-id?id=All`)
+    axios.get(`${process.env.REACT_APP_API}/api/get-detail-car-by-id?id=All`)
     .then(res => {
         const cars = res.data.data;
         const diadiem= "Thanh pho Ho Chi Minh";
@@ -114,7 +114,7 @@ export const CarsList:FC<{}>=({})=>{
     // let diadiem= this.props
     // console.log("Dia diem",diadiem)
 
-   axios.get(`http://localhost:5000/api/get-detail-car-by-id?id=All`)
+   axios.get(`${process.env.REACT_APP_API}/api/get-detail-car-by-id?id=All`)
    .then(res => {
        const cars = res.data.data;
        const diadiem= queryParam.get("city");

@@ -14,7 +14,7 @@ class RegisterPackageGroupOrAcc extends Component {
     }
     componentDidMount() {
    
-       axios.get(`http://localhost:5000/api/get-detail-car-by-id?id=All`)
+       axios.get(`${process.env.REACT_APP_API}/api/get-detail-car-by-id?id=All`)
        .then(res => {
            const cars = res.data.data;
            this.setState({ cars });
@@ -24,7 +24,7 @@ class RegisterPackageGroupOrAcc extends Component {
      handleDeleteCar=(car)=>{
         console.log("clicked",car.id)
         try {
-            axios.get(`http://localhost:5000/api/delete-car?id=${car.id}`)
+            axios.get(`${process.env.REACT_APP_API}/api/delete-car?id=${car.id}`)
             alert("Your car information has been deleted!");
 
         } catch (error) {

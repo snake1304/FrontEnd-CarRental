@@ -12,7 +12,7 @@ class RentalManage extends Component {
         }
       }
     componentDidMount() {
-        axios.get(`http://localhost:5000/api/get-detail-rental-by-id?id=All`)
+        axios.get(`${process.env.REACT_APP_API}/api/get-detail-rental-by-id?id=All`)
     .then(res => {
         const rentals = res.data.data;
         this.setState({ rentals });
@@ -27,7 +27,7 @@ class RentalManage extends Component {
     handleDeleteLocation=(rental)=>{
         console.log("clicked",rental.id)
         try {
-            axios.get(`http://localhost:5000/api/delete-rental?id=${rental.id}`)
+            axios.get(`${process.env.REACT_APP_API}/api/delete-rental?id=${rental.id}`)
             alert("Your rental information has been deleted!");
 
         } catch (error) {

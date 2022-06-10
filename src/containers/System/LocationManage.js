@@ -17,7 +17,7 @@ class LocationManage extends Component {
 
     componentDidMount() {
 
-        axios.get(`http://localhost:5000/api/get-all-locations?id=All`)
+        axios.get(`${process.env.REACT_APP_API}/api/get-all-locations?id=All`)
         .then(res => {
             const lists = res.data.data;
             this.setState({ lists });
@@ -37,7 +37,7 @@ class LocationManage extends Component {
     }
     handleAddLocation=()=>{
         try {
-            axios.post('http://localhost:5000/api/create-new-location',this.state)            
+            axios.post('${process.env.REACT_APP_API}/api/create-new-location',this.state)            
             console.log("Respone create car", this.state,6000)
         } catch (error) {
             
@@ -47,7 +47,7 @@ class LocationManage extends Component {
     handleDeleteLocation=async(location)=>{
         console.log("clicked",location.id)
         try {
-            axios.get(`http://localhost:5000/api/delete-location?id=${location.id}`)
+            axios.get(`${process.env.REACT_APP_API}/api/delete-location?id=${location.id}`)
             alert("Your location infor has been deleted!");
 
         } catch (error) {

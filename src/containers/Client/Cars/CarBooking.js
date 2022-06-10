@@ -65,7 +65,7 @@ class CarBooking extends Component {
 
 
 
-        axios.get(`http://localhost:5000/api/get-detail-car-by-id?id=${id}`)
+        axios.get(`${process.env.REACT_APP_API}/api/get-detail-car-by-id?id=${id}`)
 
         .then(res => {
             const cars = res.data.data;

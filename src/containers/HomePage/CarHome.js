@@ -26,7 +26,7 @@ class CarHome extends Component {
     }
 }
 componentDidMount() {
-    axios.get(`http://localhost:5000/api/get-all-locations?id=All`)
+    axios.get(`${process.env.REACT_APP_API}/api/get-all-locations?id=All`)
     .then(res => {
         const locations = res.data.data;
         this.setState({ locations });

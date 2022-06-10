@@ -91,7 +91,7 @@ class CarsList extends Component {
             
             return Math.floor((t1*t2));
             }       
-        axios.get(`http://localhost:5000/api/get-detail-car-by-id?id=${id}`)
+        axios.get(`${process.env.REACT_APP_API}/api/get-detail-car-by-id?id=${id}`)
 
         .then(res => {
             const cars = res.data.data;

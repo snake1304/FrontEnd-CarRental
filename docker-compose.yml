@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+     car-rental:
+          container_name: vy-02
+          build:
+               context: .
+               dockerfile: Dockerfile
+          volumes:
+               - ".:/app"
+               - "/app/node_modules"
+          ports:
+               - "6070:80"
+          environment:
+               - NODE_ENV=development

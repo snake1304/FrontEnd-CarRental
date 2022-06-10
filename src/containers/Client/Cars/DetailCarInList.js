@@ -26,7 +26,7 @@ class DetailCarInList extends Component {
     componentDidMount() 
     {
       let id= this.props.match.params.id      
-      axios.get(`http://localhost:5000/api/get-detail-car-by-id?id=${id}`)
+      axios.get(`${process.env.REACT_APP_API}/api/get-detail-car-by-id?id=${id}`)
       .then(res => {
           const cars = res.data.data;
           this.setState({ cars });
@@ -46,7 +46,7 @@ class DetailCarInList extends Component {
     }
     handleEditStatus=()=>{
         try {
-            axios.post('http://localhost:5000/api/put-car',this.state.status)            
+            axios.post('${process.env.REACT_APP_API}/api/put-car',this.state.status)            
             console.log("Respone create car", this.state,6000)
         } catch (error) {
             
