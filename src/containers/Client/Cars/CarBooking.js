@@ -7,7 +7,10 @@ import cardLogo from '../../../assets/images/card.png';
 import Footer from '../../Footer/Footer';
 import './CarBooking.scss'
 
-import HeaderHomepage from '../../HomePage/HeaderHomepage'
+import HeaderHomepage from '../../HomePage/HeaderHomepage';
+import { setUser } from "../../../store/actions/appActions";
+import { connect } from "react-redux";
+const { REACT_APP_PROFILE } = process.env;
 
 class CarBooking extends Component {
 
@@ -23,6 +26,7 @@ class CarBooking extends Component {
             
         }
     }
+
     handleOnChangeIput=(event, id)=>{
         let copyState={...this.state};
         copyState[id]= event.target.value;
@@ -33,11 +37,11 @@ class CarBooking extends Component {
           
         }
         )
+        this.props.setUser({...this.props.user,[id]:event.target.value});
+        
     }
     componentDidMount(){
         const queryParam = new URLSearchParams(this.props.location.search)
-        console.log("props",this.props)
-
         
 
         let id= this.props.match.params.id
@@ -49,7 +53,7 @@ class CarBooking extends Component {
 
 
 
-
+       
 
   
 
@@ -85,14 +89,19 @@ class CarBooking extends Component {
             
 
         })
+       
 
     }
-   
+    handleLogin=()=>{
+        window.location.href =
+			REACT_APP_PROFILE +
+			`/Login?redirect=${process.env.REACT_APP_BASE_API}/login`;
+    }
     
     handleContinue=()=>{
         const list = this.state.cars
     
-        this.props.history.push(`/detail-cars-booking2/${this.state.cars.id}${this.props.location.search}&name=${this.state.FullName}&phone=${this.state.Phone}&email=${this.state.Email}`)
+        this.props.history.push(`/detail-cars-booking2/${this.state.cars.id}${this.props.location.search}&name=${this.props.user.name}&phone=${this.props.user.phone}&email=${this.props.user.email}`)
         console.log("location in copy state:",this.state); 
     }
 
@@ -106,8 +115,82 @@ class CarBooking extends Component {
             <div>
                 <>
                 <HeaderHomepage/>
+               
                 <div className='container'>
+
+                {this.props.user ?(
                 <div className='left'>
+                    <div className='top'>
+                        <h3>Your Booking</h3>
+                        <h7>Fill in your details and review your booking.</h7>
+                        <div className='login'>
+                            <div className='left-c'>
+                                <img src={Logo}/>
+                            </div>
+                            <div className='right-c'>
+                                
+                                <h4 className='h444'>Thanks for using my system</h4>
+                                <div className='login-content2'> <h7>Book faster and easier with Passenger Quick Pick</h7> </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div className='bot'>
+                    <h3>Contact Details</h3>
+
+                    <div className='contact-form'>
+                        <div className='top-contact'>
+                        <h5>Contact Details (for E-ticket/Voucher)</h5>
+                        </div>
+
+                        <label className='fullname'>Full Name</label>
+
+                        <div className='box'>
+                            { this.props.user && this.props.user.name&&
+                
+                
+                            <input className='box' type='text' onChange={(event)=>{this.handleOnChangeIput(event,"name")}}
+                            
+                             value={this.props.user.name}
+                            
+                             />
+                            }
+                        </div>
+
+                        <div className='phone-email'>
+                            <div className='left'>
+                            <label className='phone'>Mobile Number</label>
+                                <div className='box'>
+                                { this.props.user && this.props.user.phone&&
+
+                                    <input className='box1' type='text' onChange={(event)=>{this.handleOnChangeIput(event,"phone")}} value={this.props.user.phone}/>
+                                }
+                                </div>
+                            </div>
+                            <div className='right'>
+                            <label className='email'>Email</label>
+                                <div className='box'>
+                                { this.props.user && this.props.user.email&&
+
+                                    <input className='box1' type='text' onChange={(event)=>{this.handleOnChangeIput(event,"email")}} value={this.props.user.email}/>
+                                }
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    </div>
+                    <div className='button'>
+                    <button type="button" className="btn btn-primary" onClick={this.handleContinue} >Continue</button>
+
+                    </div>
+                </div>
+                ):(
+                    <div className='left'>
                     <div className='top'>
                         <h3>Your Booking</h3>
                         <h7>Fill in your details and review your booking.</h7>
@@ -118,7 +201,7 @@ class CarBooking extends Component {
                             <div className='right-c'>
                                 <div className='login-content'> <h6>Log In or register to enjoy this member-only benefit</h6> </div>
                                 <div className='login-content2'> <h7>Book faster and easier with Passenger Quick Pick</h7> </div>
-                                <div className='log-res'> <span>Log In or Register</span></div>
+                                <div className='log-res'> <span onClick={this.handleLogin}>Log In or Register</span></div>
 
                             </div>
 
@@ -163,6 +246,13 @@ class CarBooking extends Component {
 
                     </div>
                 </div>
+                )
+                    
+                
+                }
+
+
+
                 <div className='right'>
 
                     <div className='rental-detail'>
@@ -237,4 +327,20 @@ class CarBooking extends Component {
 }
 
 
-export default CarBooking;
+const mapStateToProps = (state) => {
+	return {
+		isLoggedIn: state.admin.isLoggedIn,
+		user: state.app.user,
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		setUser: (data) => dispatch(setUser(data)),
+		logout: () => {
+			dispatch(setUser(null));
+		},
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CarBooking);

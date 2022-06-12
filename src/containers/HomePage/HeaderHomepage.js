@@ -11,7 +11,6 @@ class HeaderHomepage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			token: "",
 		};
 	}
 	componentDidMount() {
@@ -47,6 +46,9 @@ class HeaderHomepage extends Component {
 	handleRegister = () => {
 		window.location.href = REACT_APP_PROFILE + "/signup";
 	};
+	handelViewProfle=()=>{
+		window.location.href = REACT_APP_PROFILE +"/profile/view";
+	};
 
 	render() {
 		console.log("stateeee", this.state);
@@ -81,12 +83,12 @@ class HeaderHomepage extends Component {
 							</div>
 							{this.props.user ? (
 								<>
-									<a href="">
+									<span className="viewProfile" onClick={this.handelViewProfle}>
 										{this.props.user.name}
-									</a>
+									</span>
 									<button
 										type="button"
-										className="btn btn-primary"
+										className="btn1 btn-primary"
 										onClick={this.hanldeLogout}
 									>
 										Logout

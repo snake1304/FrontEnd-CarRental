@@ -4,6 +4,22 @@
     background-color: #0194f3;
 }
 
+button.btn1.btn-primary {
+    margin-left: 20px;
+    margin-top: 10px;
+    background-color: #0194f3;
+    border: none;
+    height: 30px;
+    border-radius: 6px;
+
+}
+
+span.viewProfile {
+    cursor: pointer;
+    font-weight: 700;
+    color: #0194f3;
+}
+
 .home-header-container {
     height: 65px;
     width: 100%;
