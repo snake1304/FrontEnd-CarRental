@@ -22,15 +22,50 @@ class CarHome extends Component {
         ],
         StartDate:new Date(),
         EndDate:new Date(),
+        user:[]
         
     }
 }
+
+
+
 componentDidMount() {
+
+    const search = new URLSearchParams(window.location.search)
+
+    console.log("search:::", search.get("token"))
+
+    if(search.get("token")){
+        localStorage.setItem("token",search.get("token"));
+        const accessToken = localStorage.getItem("token");
+
+        console.log("access",accessToken)
+       
+        axios.get(`https://profile.vinhphancommunity.xyz/api/users/me`,
+        {headers:{Authorization: `Bearer ${accessToken}`}})
+        .then(res=>{
+            {
+                const user = res.data.data;
+                this.setState({ user });
+                console.log("user",this.state)
+            }
+        })
+
+    }else{
+        window.location.href = `https://profile.vinhphancommunity.xyz/Login?redirect=${process.env.REACT_APP_BASE_API}/home`;
+    }
+
+
+
+
+
+
     axios.get(`${process.env.REACT_APP_API}/api/get-all-locations?id=All`)
     .then(res => {
         const locations = res.data.data;
         this.setState({ locations });
         console.log("This is location",locations);
+        
 
      
 

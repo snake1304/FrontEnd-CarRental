@@ -2,9 +2,39 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './HeaderHomepage.scss';
-class HeaderHomepage extends Component {
+import axios from 'axios'
 
-    render() {     
+class HeaderHomepage extends Component {
+    constructor(props) {
+        super(props)
+        this.state={
+            token:"",
+                          
+        }
+    }
+    componentDidMount(){
+        const search = new URLSearchParams(window.location.search)
+        console.log("Search in header",search.get("token"));
+        const getToken = search.get("token");
+        console.log("get tokennn", getToken)
+
+        
+    
+
+    }
+    
+    handleLogin=()=>{
+
+        window.location.href = `https://profile.vinhphancommunity.xyz/Login?redirect=${process.env.REACT_APP_BASE_API}/home`;
+    }
+    hanldeLogout=()=>{
+        window.location.href = `https://profile.vinhphancommunity.xyz/Login?redirect=${process.env.REACT_APP_BASE_API}/home`;
+
+    }
+
+    render() {
+        console.log("stateeee", this.state)
+
         return (
          <>   
             <div className='above'></div>                
@@ -36,10 +66,12 @@ class HeaderHomepage extends Component {
                                 <p>Pay</p>
                             </div>
                             <div className='child-content'>
-                                <p>Log In</p>
+                            <button type="button" className="btn btn-primary"
+                            onClick={this.handleLogin}>Login</button>
                             </div>
                             <div className='child-content'>
-                            <button type="button" className="btn btn-primary">Register</button>
+                            <button type="button" className="btn btn-primary"
+                            onClick={this.hanldeLogout}>Log Out</button>
                             </div>
                         </div>
                 </div>
