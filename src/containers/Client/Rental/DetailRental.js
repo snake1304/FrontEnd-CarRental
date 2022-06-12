@@ -36,7 +36,7 @@ class DetailRental extends Component {
     componentDidMount() 
     {
       let id= this.props.match.params.id      
-      axios.get(`http://localhost:5000/api/get-detail-rental-by-id?id=${id}`)
+      axios.get(`${process.env.REACT_APP_API}/api/get-detail-rental-by-id?id=${id}`)
       .then(res => {
           const rentals = res.data.data;
           this.setState({ rentals });

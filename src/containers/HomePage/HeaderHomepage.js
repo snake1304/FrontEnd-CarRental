@@ -1,14 +1,56 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import { connect } from "react-redux";
 import "./HeaderHomepage.scss";
+import axios from "axios";
+import { setUser } from "../../store/actions/appActions";
+import { connect } from "react-redux";
+
+const { REACT_APP_PROFILE } = process.env;
+
 class HeaderHomepage extends Component {
 	constructor(props) {
 		super(props);
-		console.log(this.props);
+		this.state = {
+			token: "",
+		};
+	}
+	componentDidMount() {
+		let token = localStorage.getItem("token");
+
+		if (token) {
+			axios({
+				url: process.env.REACT_APP_PROFILE + "/api/users/me",
+				headers: { authorization: "Bearer " + token },
+			}).then(({ data }) => {
+				if (data.success) {
+					this.props.setUser(data.data);
+				} else {
+					localStorage.clear();
+					window.location.reload();
+				}
+			});
+		}
 	}
 
+	handleLogin = () => {
+		window.location.href =
+			REACT_APP_PROFILE +
+			`/Login?redirect=${process.env.REACT_APP_BASE_API}/login`;
+	};
+	hanldeLogout = () => {
+		// window.location.href = `https://profile.vinhphancommunity.xyz/Login?redirect=${process.env.REACT_APP_BASE_API}/home`;
+		localStorage.clear();
+		this.props.logout();
+		// window.location.reload();
+	};
+
+	handleRegister = () => {
+		window.location.href = REACT_APP_PROFILE + "/signup";
+	};
+
 	render() {
+		console.log("stateeee", this.state);
+
 		return (
 			<>
 				<div className="above"></div>
@@ -39,20 +81,38 @@ class HeaderHomepage extends Component {
 							</div>
 							{this.props.user ? (
 								<>
-									<a href="https://profile.vinhphancommunity.xyz/profile/view">
+									<a href="">
 										{this.props.user.name}
 									</a>
-									<button>Logout</button>
+									<button
+										type="button"
+										className="btn btn-primary"
+										onClick={this.hanldeLogout}
+									>
+										Logout
+									</button>
 								</>
 							) : (
 								<>
+									{" "}
 									<div className="child-content">
-										<p>Log In</p>
+										<button
+											type="button"
+											className="btn btn-primary"
+											onClick={
+												this.handleLogin
+											}
+										>
+											Login
+										</button>
 									</div>
 									<div className="child-content">
 										<button
 											type="button"
 											className="btn btn-primary"
+											onClick={
+												this.handleRegister
+											}
 										>
 											Register
 										</button>
@@ -76,7 +136,12 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-	return {};
+	return {
+		setUser: (data) => dispatch(setUser(data)),
+		logout: () => {
+			dispatch(setUser(null));
+		},
+	};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderHomepage);

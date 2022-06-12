@@ -20,28 +20,39 @@ class CarHome extends Component {
 			locations: [],
 			StartDate: new Date(),
 			EndDate: new Date(),
+			user: [],
 		};
 	}
-	componentDidMount() {
-		// lay token
-		const token = "loi";
-		// const token =
-		// 	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVmluaCBHcm91cCIsInVzZXJuYW1lIjoidmluaHBoYW44MTIiLCJlbWFpbCI6InZpbmhwaGFuODEyQGdtYWlsLmNvbSIsInN1YiI6IjVGRTY1NUFELUFEQjgtNDU5OS1BQTBGLTc5MDY0QTI5MUIxOCIsInR5cGUiOiJQQVJUTkVSIiwiYXBwSWQiOiJ2eTAzIiwic2VydmljZXMiOlsiQVBBUlQiLCJGTElHSFQiLCJDQVJSRU5UQUwiLCJBSVJQT1JUIiwiSE9URUwiLCJYUEVSSUVOQ0UiLCJFQVRTIiwiQ09NQk8iXSwiaWF0IjoxNjU1MDE4MTYxLCJleHAiOjE2NjI3OTQxNjF9.Ig1MiaBhGdfYwYvdn3D6FR7nIENhQ9nvK3VRYD6OGSM";
 
-		if (token)
-			axios({
-				url: "https://profile.vinhphancommunity.xyz/api/users/me",
-				headers: { authorization: "Bearer " + token },
-			}).then(({ data }) => {
-				// set vao store
-				if (data.succes) this.props.setUser(data.data);
-				else {
-					// yeu cau dang nhap
-				}
-			});
-		else {
-			// yeu cau dang nhap
-		}
+	componentDidMount() {
+		// const search = new URLSearchParams(window.location.search);
+
+		// console.log("search:::", search.get("token"));
+
+		// let token = search.get("token") || localStorage.getItem("token");
+
+		// if (token) {
+		// 	localStorage.setItem("token", token);
+
+		// 	axios({
+		// 		url: "https://profile.vinhphancommunity.xyz/api/users/me",
+		// 		headers: { authorization: "Bearer " + token },
+		// 	}).then(({ data }) => {
+		// 		if (data.success) {
+		// 			this.props.setUser(data.data);
+		// 			if (window.location.search) {
+		// 				window.location.href = "/home";
+		// 			}
+		// 		} else {
+		// 			localStorage.clear();
+		// 			// window.location.reload();
+		// 		}
+		// 	});
+		// }
+		// else {
+		// 	window.location.href = `https://profile.vinhphancommunity.xyz/Login?redirect=${process.env.REACT_APP_BASE_API}/home`;
+		// }
+
 		axios.get(
 			`${process.env.REACT_APP_API}/api/get-all-locations?id=All`
 		).then((res) => {

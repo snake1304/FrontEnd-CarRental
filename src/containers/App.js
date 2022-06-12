@@ -24,6 +24,8 @@ import CarBooking2 from "./Client/Cars/Payment/CarBooking2";
 import DetailRental from "./Client/Rental/DetailRental";
 import DetailCarInList from "./Client/Cars/DetailCarInList";
 
+import LoginService from "./LoginService";
+
 import CarListHomepage from "./HomePage/CarListHomepage";
 import { CustomToastCloseButton } from "../components/CustomToast";
 import ConfirmModal from "../components/ConfirmModal";
@@ -64,9 +66,7 @@ class App extends Component {
 								/>
 								<Route
 									path={path.LOGIN}
-									component={userIsNotAuthenticated(
-										Login
-									)}
+									component={LoginService}
 								/>
 								<Route
 									path={path.SYSTEM}
